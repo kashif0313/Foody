@@ -1,0 +1,60 @@
+@import "remixicon/fonts/remixicon.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.food-loader {
+  display: flex;
+  gap: 14px;
+}
+
+.food-icon {
+  font-size: 34px;
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.food-icon:nth-child(1) {
+  animation-delay: 0s;
+}
+.food-icon:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.food-icon:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.food-icon:nth-child(4) {
+  animation-delay: 0.45s;
+}
+.food-icon:nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  40% {
+    transform: translateY(-14px);
+    opacity: 1;
+  }
+}
+
+/* Text fade */
+.animate-fade {
+  animation: fade 1.5s infinite;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
