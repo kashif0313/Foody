@@ -59,7 +59,7 @@ export default function Home() {
                   to="/menu"
                   className={`px-8 py-4 bg-${color}-500 text-white rounded-full text-sm font-semibold hover:bg-${color}-600 transition-colors whitespace-nowrap cursor-pointer shadow-lg`}
                 >
-                  Scroll Down
+                  Order Now{" "}
                 </Link>
               </div>
             </div>

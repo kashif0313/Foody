@@ -7,6 +7,7 @@ export default function InputField({
   value,
   placeholder,
   required = false,
+  readonly = false,
   error = false,
   onChange,
 }: FormInputProps) {
@@ -21,14 +22,15 @@ export default function InputField({
         type={type}
         value={value}
         required={required}
-        onChange={(e) => onChange(e.target.value)}
+        readOnly={readonly}
+        onChange={(e) => onChange?.(e.target.value)}
         placeholder={placeholder}
         className={`w-full px-4 py-3 rounded-lg text-sm focus:outline-none focus:ring-2
           ${
             error
               ? "border border-red-500 focus:ring-red-500"
               : `border border-gray-200 focus:ring-${color}-500`
-          }
+          } ${readonly ? "cursor-pointer bg-gray-100" : "cursor-text"}
         `}
       />
       {error && (

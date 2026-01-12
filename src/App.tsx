@@ -15,6 +15,7 @@ import TrackOrder from "./Pages/TrackOrder";
 import Services from "./Pages/Services";
 import About from "./Pages/AboutUs";
 import CustomizationPanel from "./Sections/CustomizeFloat";
+import ForgotPassword from "./Pages/ForgotPassword";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/track-order" element={<TrackOrder />} />
         <Route path="/services" element={<Services />} />
         <Route path="/about-us" element={<About />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
       <Footer />
     </>

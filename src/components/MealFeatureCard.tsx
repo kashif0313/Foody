@@ -16,43 +16,53 @@ export default function MealFeatureCard({
   return (
     <>
       <div
-        className={`bg-${color}-500 rounded-3xl p-6 relative  group cursor-pointer hover:shadow-2xl transition-all`}
+        className={`bg-${color}-500 rounded-3xl p-6 relative group cursor-pointer hover:shadow-2xl transition-all flex flex-col justify-between`}
+        style={{ minHeight: "350px" }} // ensures button sticks at bottom
       >
-        <div className="relative w-48 h-48 mx-auto mb-6 -mt-20 ">
+        {/* Image with Rating Badge */}
+        <div className="relative w-48 h-48 mx-auto -mt-20">
+          {/* Gradient Circle Background */}
           <div
-            className={`absolute inset-0 bg-gradient-to-br from-${color}-400 to-${color}-500  rounded-full`}
+            className={`absolute inset-0 bg-gradient-to-br from-${color}-400 to-${color}-500 rounded-full`}
           ></div>
+
+          {/* Main Image */}
           <img
             src={image}
-            alt="Berries Salad"
-            className="relative  w-full h-full object-cover object-center rounded-full border-8 border-white/50"
+            alt={title}
+            className="relative w-full h-full object-cover object-center rounded-full border-8 border-white/50"
           />
+
+          {/* Rating Badge */}
+          <div className="absolute top-2 right-2 flex items-center bg-white px-3 py-1 rounded-full shadow-md">
+            <i className="ri-star-fill text-yellow-400 mr-1"></i>
+            <span className="text-sm font-semibold text-gray-800">
+              {rating}
+            </span>
+          </div>
+
+          {/* Favorite Heart Icon */}
+          <div className="absolute bottom-2 left-2 w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md cursor-pointer">
+            <i className="ri-heart-fill text-red-500"></i>
+          </div>
         </div>
 
-        <div className="text-center text-white">
-          <h3 className="text-2xl font-bold mb-3">{title}</h3>
-          <div className="flex items-center justify-between mb-4">
-            {/* Price */}
-            <p className="text-4xl font-bold text-white">${price}</p>
+        {/* Title & Price */}
+        <div className="text-center text-white mt-4">
+          <h3 className="text-xl font-bold mb-2">{title}</h3>
+          <p className="text-3xl font-bold mb-4">${price}</p>
+        </div>
 
-            {/* Fav Icon */}
-            <div className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-md cursor-pointer ">
-              <i className="ri-heart-fill text-xl text-red-500"></i>
-            </div>
-          </div>
+        {/* Button at Bottom */}
+        <div className="mt-auto text-center">
           <Link to={`/menu-detail/${id}`} data-discover="true">
-            <div className="flex items-center justify-between mb-4">
-              <RoundedButton
-                label="Order Now"
-                icon={<i className="ri-arrow-right-line text-lg"></i>}
-                variant="secondary"
-                className="px-8 py-3"
-                onClick={() => console.log("Order clicked")}
-              />
-
-              <i className="ri-star-fill text-white text-lg"></i>
-              <span className="text-lg font-semibold">{rating}</span>
-            </div>
+            <RoundedButton
+              label="Order Now"
+              icon={<i className="ri-arrow-right-line text-lg"></i>}
+              variant="secondary"
+              className="px-8 py-3"
+              onClick={() => console.log("Order clicked")}
+            />
           </Link>
         </div>
       </div>

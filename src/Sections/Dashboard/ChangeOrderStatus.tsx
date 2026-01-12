@@ -7,7 +7,10 @@ export default function ChangeOrderStatus({
   onClose,
   onUpdate,
 }: ChangeOrderStatusProps) {
-  const [newOrderStatus, setNewOrderStatus] = useState("");
+  const [newOrderStatus, setNewOrderStatus] = useState(
+    selectedOrder?.status ?? ""
+  );
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case "received":

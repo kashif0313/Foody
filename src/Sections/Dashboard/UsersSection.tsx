@@ -3,10 +3,11 @@ import DataTable from "../../components/DataTable";
 import SimpleButton from "../../components/SimpleButton";
 import type { TableColumn, User } from "../../helpers/Interface";
 import { customers } from "../../helpers/MockData";
+import UsersDetails from "./UserDetails";
 
 export default function UsersSection() {
   const [showAddModal, setShowAddModal] = useState(false);
-  const [editingUser, setEditingUser] = useState<User | null>(null);
+  const [userDetail, setDetailUser] = useState<User | null>(null);
   const [selectedUserForAction, setSelectedUserForAction] =
     useState<User | null>(null);
   const [userAction, setUserAction] = useState<
@@ -19,7 +20,7 @@ export default function UsersSection() {
   };
 
   const handleEditUser = (user: User) => {
-    setEditingUser(user);
+    setDetailUser(user);
     setShowAddModal(true);
   };
   const handleUserAction = (
@@ -140,7 +141,7 @@ export default function UsersSection() {
             onClick={() => handleEditUser(user)}
             className="w-8 h-8 flex items-center justify-center text-blue-600 hover:bg-blue-50 rounded-lg"
           >
-            <i className="ri-edit-line"></i>
+            <i className="ri-eye-line"></i>
           </button>
           <button
             onClick={() => handleDeleteUser(user)}
@@ -182,19 +183,19 @@ export default function UsersSection() {
       {" "}
       <div className="bg-white rounded-2xl border border-gray-100">
         <div className="p-6 border-b border-gray-100 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900">All Category</h2>
+          <h2 className="text-xl font-bold text-gray-900">All Users</h2>
 
           <div>
-            <SimpleButton
+            {/* <SimpleButton
               onClick={() => {
                 setShowAddModal(true);
-                setEditingUser(null);
+                setDetailUser(null);
               }}
               className="w-auto"
               type="button"
               label="Add New User"
               icon={<i className="ri-add-line"></i>}
-            />
+            /> */}
           </div>
         </div>
         <div className="overflow-x-auto">
@@ -245,6 +246,12 @@ export default function UsersSection() {
             </div>
           </div>
         </div>
+      )}
+      {showAddModal && (
+        <UsersDetails
+          onClose={() => setShowAddModal(false)}
+          viewUser={userDetail}
+        />
       )}
     </>
   );

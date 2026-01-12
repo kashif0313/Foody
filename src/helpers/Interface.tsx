@@ -64,7 +64,8 @@ export interface FormInputProps {
   value: string;
   placeholder?: string;
   required?: boolean;
-  onChange: (value: string) => void;
+  readonly?: boolean;
+  onChange?: (value: string) => void;
   error?: boolean;
 }
 
@@ -212,4 +213,8 @@ export interface User {
   joinDate: string;
   totalOrders: number;
   totalSpent: number;
+}
+export interface ViewUserDetailsProps {
+  viewUser: User | null;
+  onClose: () => void;
 }

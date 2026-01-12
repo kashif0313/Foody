@@ -7,9 +7,12 @@ export default function OrderDetailsSection({
 }: OrderDetailsSectionProps) {
   return (
     <>
-      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-        <div className="bg-white rounded-2xl max-w-3xl w-full p-6 my-8">
-          <div className="flex items-center justify-between mb-6">
+      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 ">
+        <div
+          className="bg-white rounded-2xl max-w-3xl w-full p-6 my-2 
+                max-h-[calc(100vh-20px)] overflow-y-auto custom-scrollbar"
+        >
+          <div className="flex  justify-between mb-6">
             <h3 className="text-2xl font-bold text-gray-900">Order Details</h3>
             <button
               onClick={() => onClose()}
@@ -19,7 +22,7 @@ export default function OrderDetailsSection({
             </button>
           </div>
           {selectedOrder && (
-            <div className="space-y-6">
+            <div className="space-y-6 ">
               {/* Order Info */}
               <div className="bg-gray-50 rounded-xl p-4">
                 <div className="grid grid-cols-2 gap-4">
