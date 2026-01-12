@@ -162,7 +162,7 @@ export default function CustomizationPanel() {
 
               {/* Preset Colors */}
               <div>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-4 gap-3">
                   {presetColors.map((preset) => (
                     <button
                       key={preset.hex}
@@ -238,7 +238,7 @@ export default function CustomizationPanel() {
           </div>
 
           {/* Footer Actions */}
-          <div className="p-6 border-t border-gray-200 space-y-3">
+          <div className="p-6 border-t border-gray-200 flex space-x-2 ">
             <SimpleButton
               type="submit"
               label="Save Changes"
@@ -248,7 +248,7 @@ export default function CustomizationPanel() {
             />
             <SimpleButton
               type="button"
-              label=" Reset to Default"
+              label="Reset to Default"
               className="flex-1"
               variant="secondary"
               icon={<i className="ri-refresh-line mr-2"></i>}

@@ -14,6 +14,10 @@ import {
 import { getThemeColor } from "../helpers/common";
 const color = getThemeColor();
 export default function Home() {
+  const defaultSettings = {
+    siteName: "foody",
+    primaryColor: import.meta.env.VITE_THEME_COLOR,
+  };
   useEffect(() => {
     // Store data in localStorage if not already stored
     if (!localStorage.getItem("categories")) {
@@ -33,6 +37,9 @@ export default function Home() {
     }
     if (!localStorage.getItem("publicPages")) {
       localStorage.setItem("publicPages", JSON.stringify(publicPages));
+    }
+    if (!localStorage.getItem("WebsiteConfig")) {
+      localStorage.setItem("WebsiteConfig", JSON.stringify(defaultSettings));
     }
   }, []);
 
