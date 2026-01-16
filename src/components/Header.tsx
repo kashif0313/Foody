@@ -169,16 +169,6 @@ export default function Header() {
                               <i className="ri-user-line"></i> Profile
                             </button>
 
-                            <button
-                              onClick={() => {
-                                navigate("/settings");
-                                setShowProfileMenu(false);
-                              }}
-                              className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 flex items-center gap-2"
-                            >
-                              <i className="ri-settings-3-line"></i> Settings
-                            </button>
-
                             <div className="border-t" />
 
                             <button

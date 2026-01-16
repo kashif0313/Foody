@@ -75,7 +75,7 @@ export default function Home() {
                 {/* Large orange circle background */}
                 <div
                   className={`absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-${color}-500 rounded-full 
-                  -translate-x-1/2 -translate-y-1/2`}
+                  -translate-x-1/2 -translate-y-1/2 `}
                 ></div>
 
                 {/* Main food image */}
@@ -99,7 +99,7 @@ export default function Home() {
                 </div>
 
                 {/* Fast Delivery card */}
-                <div className="absolute top-16 -left-4 bg-white rounded-2xl shadow-xl p-4 flex items-center space-x-3">
+                <div className="absolute top-16 -left-4 bg-white rounded-2xl shadow-xl p-4 flex items-center space-x-3  animate-[float_3s_ease-in-out_infinite]">
                   <div
                     className={`w-12 h-12 flex items-center justify-center bg-${color}-100 rounded-full`}
                   >
@@ -116,7 +116,7 @@ export default function Home() {
                 </div>
 
                 {/* Best Quality card */}
-                <div className="absolute bottom-8 right-4 bg-white rounded-2xl shadow-xl p-4 flex items-center space-x-3">
+                <div className=" animate-[float_5s_ease-in-out_infinite] absolute bottom-8 right-4 bg-white rounded-2xl shadow-xl p-4 flex items-center space-x-3">
                   <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full">
                     <i className="ri-restaurant-line text-xl text-green-500"></i>
                   </div>

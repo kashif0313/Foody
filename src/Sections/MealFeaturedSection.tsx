@@ -6,8 +6,7 @@ const color = getThemeColor();
 
 export default function MealFeaturedSection() {
   const colors = getFeaturedColors();
-  // generate random colors once per render using useMemo
-  // generate random colors once on component mount
+
   const [randomColors] = useState(() =>
     menuItems.map(() => {
       const randomIndex = Math.floor(Math.random() * colors.length);
