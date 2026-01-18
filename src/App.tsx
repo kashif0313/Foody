@@ -16,6 +16,8 @@ import Services from "./Pages/Services";
 import About from "./Pages/AboutUs";
 import CustomizationPanel from "./Sections/CustomizeFloat";
 import ForgotPassword from "./Pages/ForgotPassword";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import TermsAndConditions from "./Pages/TermsAndConditions";
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
       </Routes>
       <Footer />
     </>

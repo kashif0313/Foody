@@ -8,7 +8,7 @@ export default function AppInfoSection() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
             {/* LEFT CONTENT */}
-            <div>
+            <div className="ml-8">
               <span className="inline-block bg-pink-100 text-pink-600 text-sm font-semibold px-4 py-2 rounded-full mb-4">
                 🎉 Flat 30% OFF on First Order
               </span>
@@ -55,9 +55,9 @@ export default function AppInfoSection() {
 
               <div className="relative ">
                 <img
-                  src="https://img.pikbest.com/png-images/20250325/blank-smartphone-screen-mockup-for-app-design_11627772.png!sw800"
+                  src="../assets/phone.png"
                   alt="Mobile App Mockup"
-                  className="w-72 sm:w-80 lg:w-96 drop-shadow-2xl"
+                  className=" h-80  drop-shadow-2xl"
                 />
               </div>
             </div>

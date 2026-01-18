@@ -57,7 +57,16 @@ export default function Header() {
   return (
     <>
       <div className="fixed w-full bg-yellow-100 text-yellow-900 text-md text-center py-1 z-20">
-        🚀 ItsKashifWork Portfolio Demo — Built by Kashif Imran
+        🚀{" "}
+        <a
+          href="https://itskashifwork.epizy.com/?i=1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className=" underline "
+        >
+          ItsKashifWork
+        </a>{" "}
+        Portfolio Demo — Built by Kashif Imran
       </div>
       <nav
         className={`fixed top-8 left-0 right-0 z-20 transition-all duration-300 bg-white shadow-md`}
@@ -129,9 +138,6 @@ export default function Header() {
                     About Us
                   </NavLink>
                   <div className="flex items-center space-x-4">
-                    <button className="w-8 h-8 flex items-center justify-center cursor-pointer">
-                      <i className="ri-search-line text-xl text-gray-700"></i>
-                    </button>
                     <Link to="/checkout" className="relative cursor-pointer">
                       <i className="ri-shopping-cart-line text-xl text-gray-700"></i>
                       {cartCount > 0 && (

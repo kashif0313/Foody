@@ -50,53 +50,17 @@ export default function Footer() {
                   About us
                 </Link>
               </li>
-              <li>
-                <Link to="/team" className="hover:text-white transition-colors">
-                  Team
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/careers"
-                  className="hover:text-white transition-colors"
-                >
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services"
-                  className="hover:text-white transition-colors"
-                >
-                  Services
-                </Link>
-              </li>
+              <li>Team</li>
+              <li>Careers</li>
+              <li>Services</li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold text-white mb-6 text-lg">Support</h4>
             <ul className="space-y-3 text-sm text-white/90">
-              <li>
-                <Link to="/help" className="hover:text-white transition-colors">
-                  Help center
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/safety"
-                  className="hover:text-white transition-colors"
-                >
-                  Safety center
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/guidelines"
-                  className="hover:text-white transition-colors"
-                >
-                  Guidelines
-                </Link>
-              </li>
+              <li>Help center</li>
+              <li>Safety center</li>
+              <li>Guidelines</li>
             </ul>
           </div>
           <div>
