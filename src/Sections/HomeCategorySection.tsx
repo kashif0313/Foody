@@ -1,9 +1,7 @@
-import { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeCategorySection() {
   const navigate = useNavigate();
-  const location = useLocation();
   return (
     <>
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">

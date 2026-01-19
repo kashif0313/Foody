@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import DataTable from "../../components/DataTable";
-import SimpleButton from "../../components/SimpleButton";
 import type { TableColumn, User } from "../../helpers/Interface";
 import { customers } from "../../helpers/MockData";
 import UsersDetails from "./UserDetails";
@@ -184,19 +183,6 @@ export default function UsersSection() {
       <div className="bg-white rounded-2xl border border-gray-100">
         <div className="p-6 border-b border-gray-100 flex items-center justify-between">
           <h2 className="text-xl font-bold text-gray-900">All Users</h2>
-
-          <div>
-            {/* <SimpleButton
-              onClick={() => {
-                setShowAddModal(true);
-                setDetailUser(null);
-              }}
-              className="w-auto"
-              type="button"
-              label="Add New User"
-              icon={<i className="ri-add-line"></i>}
-            /> */}
-          </div>
         </div>
         <div className="overflow-x-auto">
           <DataTable
