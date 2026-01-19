@@ -4,11 +4,16 @@ import MealSimpleCard from "../components/MealSimpleCard";
 import type { AdminMealData, Category } from "../helpers/Interface";
 import { getThemeColor } from "../helpers/common";
 import FoodLoadingScreen from "../helpers/LoadingScreen";
+import { useNavigate, useLocation } from "react-router-dom";
 const color = getThemeColor();
 export default function Menu() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [showLoading, setShowLoading] = useState(true);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
   // Lazy initialize menuItems from localStorage
   const [menuItems] = useState<AdminMealData[]>(() => {
     const stored = localStorage.getItem("menuItems");
@@ -40,6 +45,14 @@ export default function Menu() {
 
     return () => clearTimeout(timer);
   });
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const categoryFromUrl = params.get("category");
+
+    if (categoryFromUrl) {
+      setSelectedCategory(categoryFromUrl);
+    }
+  }, [location.search]);
   return (
     <>
       {showLoading && <FoodLoadingScreen />}
@@ -77,7 +90,13 @@ export default function Menu() {
             {categories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => setSelectedCategory(category.identifier)}
+                onClick={() => {
+                  setSelectedCategory(category.identifier);
+                  const params = new URLSearchParams(location.search);
+                  params.set("category", category.identifier);
+
+                  navigate(`${location.pathname}?${params.toString()}`);
+                }}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-lg text-sm font-medium transition-all whitespace-nowrap cursor-pointer ${
                   selectedCategory === category.identifier
                     ? `bg-${color}-500 text-white`

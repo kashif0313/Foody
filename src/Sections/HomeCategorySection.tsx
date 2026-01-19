@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function HomeCategorySection() {
-  useEffect(() => {}, []);
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
     <>
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
@@ -13,7 +15,12 @@ export default function HomeCategorySection() {
             {/* LEFT SIDE – IMAGE GRID */}
             <div className="grid grid-cols-2 gap-6 h-full">
               {/* Column 1 – Large Image */}
-              <div className="rounded-3xl overflow-hidden h-full ">
+              <div
+                className="rounded-3xl overflow-hidden h-full "
+                onClick={() => {
+                  navigate("/menu?category=salads");
+                }}
+              >
                 <img
                   src="../assets/home_img3.jpg"
                   alt="Main Dish"
@@ -23,7 +30,12 @@ export default function HomeCategorySection() {
 
               {/* Column 2 – Two Rows */}
               <div className="grid grid-rows-2 gap-6">
-                <div className="rounded-3xl overflow-hidden">
+                <div
+                  className="rounded-3xl overflow-hidden"
+                  onClick={() => {
+                    navigate("/menu?category=desserts");
+                  }}
+                >
                   <img
                     src="../assets/home_img2.jpg"
                     alt="Pizza"
@@ -31,7 +43,12 @@ export default function HomeCategorySection() {
                   />
                 </div>
 
-                <div className="rounded-3xl overflow-hidden">
+                <div
+                  className="rounded-3xl overflow-hidden"
+                  onClick={() => {
+                    navigate("/menu?category=drinks");
+                  }}
+                >
                   <img
                     src="../assets/home_img1.jpg"
                     alt="Kebab"
@@ -44,7 +61,12 @@ export default function HomeCategorySection() {
             {/* RIGHT SIDE – CATEGORY LIST */}
             <div className="flex flex-col gap-6">
               {/* Category Item */}
-              <div className="flex items-center gap-5 p-6 rounded-3xl bg-yellow-50 hover:shadow-lg transition">
+              <div
+                className="flex items-center gap-5 p-6 rounded-3xl bg-yellow-50 hover:shadow-lg transition"
+                onClick={() => {
+                  navigate("/menu?category=burgers");
+                }}
+              >
                 <img
                   src="../assets/burger.jpg"
                   alt="Burger"
@@ -72,7 +94,12 @@ export default function HomeCategorySection() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-5 p-6 rounded-3xl bg-green-50 hover:shadow-lg transition">
+              <div
+                className="flex items-center gap-5 p-6 rounded-3xl bg-green-50 hover:shadow-lg transition"
+                onClick={() => {
+                  navigate("/menu?category=drinks");
+                }}
+              >
                 <img
                   src="../assets/drinks.jpg"
                   alt="drinks"
