@@ -32,6 +32,8 @@ export const getThemeColor = () => {
     } catch {
       // fallback if JSON is corrupted
     }
+  } else {
+    return "green";
   }
   return saved;
 };
@@ -47,6 +49,8 @@ export const getWebsiteName = () => {
     } catch {
       // fallback if JSON is corrupted
     }
+  } else {
+    return "foody";
   }
   return saved;
 };
