@@ -32,6 +32,7 @@ export default function OrdersSection() {
     setShowOrderDetailModal(true);
   };
   const handleChangeOrderStatus = (order: adminOrder) => {
+    console.log("status == ", order);
     setSelectedOrder(order);
     setShowOrderStatusModal(true);
   };

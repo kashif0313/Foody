@@ -4,6 +4,7 @@ import RoundedButton from "./RoundedButton";
 import {
   getThemeColor,
   getWebsiteName,
+  isAdmin,
   isAdminLoggedIn,
   isLoggedIn,
 } from "../helpers/common";
@@ -127,11 +128,24 @@ export default function Header() {
                     </Link>
 
                     {!isLoggedIn() ? (
-                      <RoundedButton
-                        label="Login"
-                        className="px-4 py-2"
-                        onClick={() => navigate("/signup")}
-                      />
+                      !isAdmin() ? (
+                        <RoundedButton
+                          label="Login"
+                          className="w-full mt-2 px-4 py-2"
+                          onClick={() => {
+                            navigate("/signup");
+                            setShowMobileMenu(false);
+                          }}
+                        />
+                      ) : (
+                        <RoundedButton
+                          label="Dashboard"
+                          className="w-full mt-2 px-4 py-2"
+                          onClick={() => {
+                            navigate("/admin/dashboard");
+                          }}
+                        />
+                      )
                     ) : (
                       <div className="relative" ref={profileRef}>
                         <button
@@ -219,14 +233,24 @@ export default function Header() {
                   </Link>
 
                   {!isLoggedIn() ? (
-                    <RoundedButton
-                      label="Login"
-                      className="w-full mt-2 px-4 py-2"
-                      onClick={() => {
-                        navigate("/signup");
-                        setShowMobileMenu(false);
-                      }}
-                    />
+                    !isAdmin() ? (
+                      <RoundedButton
+                        label="Login"
+                        className="w-full mt-2 px-4 py-2"
+                        onClick={() => {
+                          navigate("/signup");
+                          setShowMobileMenu(false);
+                        }}
+                      />
+                    ) : (
+                      <RoundedButton
+                        label="Dashboard"
+                        className="w-full mt-2 px-4 py-2"
+                        onClick={() => {
+                          navigate("/admin/dashboard");
+                        }}
+                      />
+                    )
                   ) : (
                     <>
                       <button

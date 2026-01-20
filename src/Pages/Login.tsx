@@ -119,6 +119,15 @@ export default function Login() {
               Sign Up
             </Link>
           </p>
+
+          <p className="text-center text-sm text-gray-600 mt-6">
+            <Link
+              to="/admin/login"
+              className={`text-${color}-500 font-semibold hover:text-${color}-600`}
+            >
+              Admin Login
+            </Link>
+          </p>
         </div>
       </div>
     </div>

@@ -15,6 +15,10 @@ export const isLoggedIn = () => {
   return !!localStorage.getItem("userAuth");
 };
 
+export const isAdmin = () => {
+  return !!localStorage.getItem("adminAuth");
+};
+
 export const isAdminLoggedIn = () => {
   return window.location.pathname.includes("admin/dashboard");
 };

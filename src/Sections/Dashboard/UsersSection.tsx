@@ -3,6 +3,7 @@ import DataTable from "../../components/DataTable";
 import type { TableColumn, User } from "../../helpers/Interface";
 import { customers } from "../../helpers/MockData";
 import UsersDetails from "./UserDetails";
+import SimpleButton from "../../components/SimpleButton";
 
 export default function UsersSection() {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -13,10 +14,6 @@ export default function UsersSection() {
     "suspend" | "activate" | "reset"
   >("suspend");
   const [showUserActionModal, setShowUserActionModal] = useState(false);
-
-  const handleDeleteUser = (user: User) => {
-    setUsers((prev) => prev.filter((m) => m.id !== user.id));
-  };
 
   const handleEditUser = (user: User) => {
     setDetailUser(user);
@@ -142,12 +139,7 @@ export default function UsersSection() {
           >
             <i className="ri-eye-line"></i>
           </button>
-          <button
-            onClick={() => handleDeleteUser(user)}
-            className="w-8 h-8 flex items-center justify-center text-red-600 hover:bg-red-50 rounded-lg"
-          >
-            <i className="ri-delete-bin-line"></i>
-          </button>
+
           <button
             onClick={() => handleUserAction(user, "reset")}
             className="w-8 h-8 flex items-center justify-center text-purple-600 hover:bg-purple-50 rounded-lg cursor-pointer"
@@ -209,26 +201,28 @@ export default function UsersSection() {
                 `A password reset email will be sent to ${selectedUserForAction.email}. Continue?`}
             </p>
             <div className="flex space-x-3">
-              <button
+              <SimpleButton
+                type="button"
+                label="Cancel"
+                className="flex-1"
+                variant="secondary"
                 onClick={() => setShowUserActionModal(false)}
-                className="flex-1 px-6 py-3 border border-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap cursor-pointer"
-              >
-                Cancel
-              </button>
-              <button
+              />
+
+              <SimpleButton
+                type="submit"
                 onClick={confirmUserAction}
-                className={`flex-1 px-6 py-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap cursor-pointer ${
+                label={
                   userAction === "suspend"
-                    ? "bg-red-500 hover:bg-red-600 text-white"
+                    ? "Suspend"
                     : userAction === "activate"
-                    ? "bg-green-500 hover:bg-green-600 text-white"
-                    : "bg-purple-500 hover:bg-purple-600 text-white"
-                }`}
-              >
-                {userAction === "suspend" && "Suspend"}
-                {userAction === "activate" && "Activate"}
-                {userAction === "reset" && "Send Reset Email"}
-              </button>
+                    ? "Activate"
+                    : userAction === "reset"
+                    ? "Send Reset Email"
+                    : ""
+                }
+                className="flex-1"
+              />
             </div>
           </div>
         </div>

@@ -1,10 +1,84 @@
 import SimpleButton from "../../components/SimpleButton";
 import type { OrderDetailsSectionProps } from "../../helpers/Interface";
-
+import { getThemeColor } from "../../helpers/common";
+import jsPDF from "jspdf";
+const color = getThemeColor();
 export default function OrderDetailsSection({
   selectedOrder,
   onClose,
 }: OrderDetailsSectionProps) {
+  const handleThermalReceipt = () => {
+    if (!selectedOrder) return;
+
+    // Give a tall height (e.g. 300mm) for long receipts
+    const doc = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: [58, 200], // 58mm width, tall height
+    });
+
+    let y = 8;
+
+    const line = (text: string, size = 9, bold = false) => {
+      doc.setFontSize(size);
+      doc.setFont("courier", bold ? "bold" : "normal");
+      doc.text(text, 4, y);
+      y += size * 0.6;
+    };
+
+    const divider = () => {
+      doc.text("--------------------------------", 4, y);
+      y += 5;
+    };
+
+    // Header
+    line("MY RESTAURANT", 11, true);
+    line("123 Main Street");
+    line("Phone: +1 234 567 890");
+    divider();
+
+    // Order info
+    line(`Order ID: ${selectedOrder.id}`, 9, true);
+    line(`Date: ${selectedOrder.date}`);
+    line(`Status: ${selectedOrder.status}`);
+    line(`Payment: ${selectedOrder.paymentMethod}`);
+    divider();
+
+    // Customer
+    line("Customer:", 9, true);
+    line(selectedOrder.customer);
+    line(selectedOrder.customerEmail);
+    line(selectedOrder.customerPhone);
+    divider();
+
+    // Items
+    line("Items:", 9, true);
+    selectedOrder.dishes.forEach((dish) => {
+      line(`${dish.quantity}x ${dish.name}`);
+      line(
+        `   $${dish.price.toFixed(2)}  =  $${(
+          dish.price * dish.quantity
+        ).toFixed(2)}`
+      );
+    });
+
+    divider();
+
+    // Totals
+    line(`Subtotal: $${selectedOrder.subtotal.toFixed(2)}`, 9, true);
+    line(`Tax: $${selectedOrder.tax.toFixed(2)}`);
+    line(`Delivery: $${selectedOrder.deliveryFee.toFixed(2)}`);
+    divider();
+    line(`TOTAL: $${selectedOrder.total.toFixed(2)}`, 11, true);
+
+    divider();
+    line("Thank you for your order!", 9, true);
+    line("Visit us again!");
+
+    // No resizing needed
+    doc.save(`receipt-${selectedOrder.id}.pdf`);
+  };
+
   return (
     <>
       <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 ">
@@ -106,7 +180,9 @@ export default function OrderDetailsSection({
                       className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0"
                     >
                       <div className="flex items-center space-x-3">
-                        <span className="w-8 h-8 flex items-center justify-center bg-orange-50 text-orange-500 rounded-lg text-sm font-semibold">
+                        <span
+                          className={`w-8 h-8 flex items-center justify-center bg-${color}-50 text-${color}-500 rounded-lg text-sm font-semibold`}
+                        >
                           {dish.quantity}x
                         </span>
                         <span className="text-sm text-gray-900">
@@ -144,7 +220,7 @@ export default function OrderDetailsSection({
                   </div>
                   <div className="flex items-center justify-between text-lg font-bold pt-2 border-t border-gray-200">
                     <span className="text-gray-900">Total</span>
-                    <span className="text-orange-500">
+                    <span className={`text-${color}-500`}>
                       ${selectedOrder.total.toFixed(2)}
                     </span>
                   </div>
@@ -158,6 +234,7 @@ export default function OrderDetailsSection({
                   label={"Print Receipt"}
                   icon={<i className="ri-printer-line"></i>}
                   className="flex-1"
+                  onClick={handleThermalReceipt}
                 />
                 <SimpleButton
                   type="button"
